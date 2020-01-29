@@ -1,0 +1,188 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400&subset=latin,latin-ext);
+
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        html, body {
+            font-family: Arial, sans-serif;
+        }
+
+        html, body, form {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background-color: #EBEBEB;
+            background-image: url(resources/bg-ur.png), url(resources/bg-bl.png), url(resources/bg-br-1.png), url(resources/bg-br-0.png);
+            background-position: right top, left bottom, right bottom, right bottom;
+            background-repeat: no-repeat;
+        }
+
+        body {
+            display: grid;
+            min-height: 100vh;
+        }
+
+        main {
+            margin: 15vh auto 0;
+        }
+
+        nav ul, ol.countdown, footer ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        main img.logo {
+            display: block;
+            margin: 0 auto 3em;
+            max-width: 50vw;
+        }
+
+        main h2 {
+            text-align: center;
+        }
+
+        ol.countdown {
+            font-size: 1.5em;
+            display: grid;
+            grid-template-columns: repeat(4, 4.5em);
+            margin: 0 auto;
+            max-width: fit-content;
+        }
+
+        nav ul {
+            margin: 1em .5em;
+            font-size: 1.2rem;
+            display: flex;
+            flex-flow: row;
+            font-weight: 600;
+        }
+
+        nav li {
+            margin: 0 1em;
+        }
+
+        nav a {
+            text-decoration: none;
+            cursor: pointer;
+            color: #000;
+        }
+
+        ol.countdown li {
+            text-align: center;
+        }
+
+        ol.countdown span {
+            font-size: 2rem;
+            display: block;
+        }
+
+        footer ul.social {
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 3em);
+            grid-gap: .5em;
+            max-width: fit-content;
+        }
+
+        footer a {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            color: transparent;
+        }
+
+        footer a:before {
+            font-family: FontAwesome;
+            font-size: 2em;
+            position: absolute;
+            color: #000;
+            left: 0;
+            top: 0;
+        }
+
+        footer a.twitter:before {
+            content: "\f081";
+        }
+
+        footer a.facebook:before {
+            content: "\f082";
+        }
+
+        footer a.instagram:before {
+            content: "\f16d";
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="https://forms.gle/SpDGSJcfM8vNy37S7">Quer ser um Palestrante?</a></li>
+            <li><a href="https://forms.gle/oTFmMoHfimCWYJ736">Quer dar um Workshop?</a></li>
+            <li><a href="https://forms.gle/VcU8SqbPfTRNC7Tq7">Seja um Parceiro!</a></li>
+        </ul>
+    </nav>
+    <main>
+        <img class="logo" src="resources/logo.png" />
+        <h2><time datetime="2020-09-25">25</time> e <time datetime="2020-09-26">26</time> de setembro de 2020 <br />no Istituto Europeo di Design</h2>
+    </main>
+    <section class="countdown">
+        <ol class="countdown">
+            <li><span id="days"></span> dias</li>
+            <li><span id="hours"></span> horas</li>
+            <li><span id="minutes"></span> min</li>
+            <li><span id="seconds"></span> seg</li>
+        </ol>
+    </section>
+
+    <footer>
+        <ul class="social">
+            <li><a title="Twitter" class="twitter" href="https://twitter.com/Talk_UX" target="_blank">Twitter</a></li>
+            <li><a title="Facebook" class="facebook" href="https://www.facebook.com/talkuxconference" target="_blank">Facebook</a></li>
+            <li><a title="Instagram" class="instagram" href="https://www.instagram.com/explore/tags/talkux/" target="_blank">Instagram</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        (function () {
+            const then = new Date("2020-09-25 09:00:00 -3");
+            const s = 1000;
+            const m = 60 * s;
+            const h = 60 * m;
+            const d = 24 * h;
+
+            let days = document.getElementById("days");
+            let hours = document.getElementById("hours");
+            let minutes = document.getElementById("minutes");
+            let seconds = document.getElementById("seconds");
+
+
+            function countdown() {
+                const now = new Date();
+                let dif = then - now;
+
+                days.innerText = Math.floor(dif / d); dif = dif % d;
+                hours.innerText = Math.floor(dif / h); dif = dif % h;
+                minutes.innerText = Math.floor(dif / m); dif = dif % m;
+                seconds.innerText = Math.floor(dif / s);
+            }
+
+            countdown();
+
+            setInterval(countdown, 1000);
+        })();
+    </script>
+</body>
+</html>
