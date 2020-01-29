@@ -208,15 +208,23 @@
                 const now = new Date();
                 let dif = then - now;
 
-                days.innerText = Math.floor(dif / d); dif = dif % d;
-                hours.innerText = Math.floor(dif / h); dif = dif % h;
-                minutes.innerText = Math.floor(dif / m); dif = dif % m;
-                seconds.innerText = Math.floor(dif / s);
+                if (dif > 0) {
+                    days.innerText = Math.floor(dif / d); dif = dif % d;
+                    hours.innerText = Math.floor(dif / h); dif = dif % h;
+                    minutes.innerText = Math.floor(dif / m); dif = dif % m;
+                    seconds.innerText = Math.floor(dif / s);
+                } else {
+                    days.innerText = 0;
+                    hours.innerText = 0;
+                    minutes.innerText = 0;
+                    seconds.innerText = 0;
+                    if (countLoop) clearInterval(countLoop);
+                }
             }
 
-            countdown();
+            var countLoop = setInterval(countdown, 1000);
 
-            setInterval(countdown, 1000);
+            countdown();
         })();
     </script>
 </body>
