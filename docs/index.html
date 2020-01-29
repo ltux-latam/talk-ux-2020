@@ -15,35 +15,168 @@
     <meta name="msapplication-TileImage" content="resources//cropped-talkUX-logo-01-270x270.png" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <style type="text/css">
         * {
             box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body, form {
+        }
+
+        html {
+            background-color: #EBEBEB;
         }
 
         img {
             max-width: 100%;
         }
 
-        html, body {
-            font-family: Arial, sans-serif;
-            min-height: 100vh;
+        body {
+            display: grid;
+            grid-template-rows: auto auto auto 1fr auto;
+            grid-template-areas: "nav" "main" "countdown" "void" "footer";
         }
 
-        html, body, form {
+        a {
+            cursor: pointer;
+        }
+
+        /*nav*/
+        nav {
+            grid-area: nav;
+            padding: 1em;
+        }
+
+        nav ul {
             margin: 0;
             padding: 0;
+            list-style: none;
+            display: flex;
+            font-weight: 600;
+        }
+
+        nav li {
+            margin: .5em;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /*main*/
+        main {
+            grid-area: main;
+            padding: 0 1em;
+        }
+
+        img.logo {
+            display: block;
+            margin: 0 auto;
+        }
+
+        main h2 {
+            text-align: center;
+        }
+
+
+        /*countdown*/
+        section.countdown {
+            grid-area: countdown;
+            padding: 0 1em;
+        }
+
+        ol.countdown {
+            display: grid;
+            grid-template-columns: repeat(4,max-content);
+            grid-gap: 2em;
+            list-style: none;
+            margin: 0 auto;
+            padding: 0;
+            max-width: fit-content;
+        }
+
+
+        ol.countdown li {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        ol.countdown span {
+            display: block;
+            font-size: 2rem;
+        }
+
+        /*footer*/
+        footer {
+            grid-area: footer;
+            padding: 1em;
+        }
+
+        footer ul {
+            margin: 0 auto;
+            max-width: fit-content;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-self: center;
+        }
+
+        footer li {
+            margin: .5em 1em;
+        }
+
+        footer li a {
+            font-family: FontAwesome;
+            font-size: 3em;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <style>
+        @media only screen and (min-width : 600px) {
+            html {
+                background-image: url(resources/bg-ur.png), url(resources/bg-bl.png), url(resources/bg-br-1.png), url(resources/bg-br-0.png);
+                background-position: right top, left bottom, right bottom, right bottom;
+                background-repeat: no-repeat;
+            }
+
+            img.logo {
+                max-width: 50vw;
+            }
+
+            nav ul {
+                font-size: 1.2em;
+            }
+        }
+
+        @media only screen and (min-height:700px) {
+            img.logo {
+                margin-top: 10vh;
+            }
+        }
+    </style>
+    <!--<style type="text/css">
+
+        img {
+            max-width: 100%;
         }
 
         html {
-            background-color: #EBEBEB;
             background-image: url(resources/bg-ur.png), url(resources/bg-bl.png), url(resources/bg-br-1.png), url(resources/bg-br-0.png);
             background-position: right top, left bottom, right bottom, right bottom;
             background-repeat: no-repeat;
         }
 
-        body {
-            display: grid;
-        }
 
         main {
             margin: 15vh auto 0;
@@ -159,7 +292,7 @@
                 font-size: 1.5rem;
             }
         }
-    </style>
+    </style>-->
 </head>
 
 <body>
@@ -182,15 +315,13 @@
             <li><span id="seconds"></span> seg</li>
         </ol>
     </section>
-
     <footer>
         <ul class="social">
-            <li><a title="Twitter" class="twitter" href="https://twitter.com/Talk_UX" target="_blank">Twitter</a></li>
-            <li><a title="Facebook" class="facebook" href="https://www.facebook.com/talkuxconference" target="_blank">Facebook</a></li>
-            <li><a title="Instagram" class="instagram" href="https://www.instagram.com/explore/tags/talkux/" target="_blank">Instagram</a></li>
+            <li><a title="Twitter" class="twitter" href="https://twitter.com/Talk_UX" target="_blank">&#xf081;</a></li>
+            <li><a title="Facebook" class="facebook" href="https://www.facebook.com/talkuxconference" target="_blank">&#xf082;</a></li>
+            <li><a title="Instagram" class="instagram" href="https://www.instagram.com/explore/tags/talkux/" target="_blank">&#xf16d;</a></li>
         </ul>
     </footer>
-
     <script>
         (function () {
             const then = new Date("2020-09-25T09:00:00-03:00");
